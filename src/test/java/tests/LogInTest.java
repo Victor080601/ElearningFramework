@@ -47,7 +47,7 @@ public class LogInTest extends ShareData {
 
         List<String> tabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(1));
-        Thread.sleep(1000);
+
         WebElement fieldEmailElement = driver.findElement(By.id("username"));
         String emailValue = "victor.oprea@student.unitbv.ro";
         element.fillElement(fieldEmailElement,emailValue);
@@ -75,8 +75,8 @@ public class LogInTest extends ShareData {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", driver.findElement(searchLocator));
         WebElement searchBar = driver.findElement(searchLocator);
         element.clickElement(searchBar);
-
-        List<WebElement> allCoursesOptions = driver.findElements(By.xpath(" //div[@id='yui_3_17_2_1_1663669950143_37']/ul/li[8]/a"));
+        //div[@id='yui_3_17_2_1_1663669950143_37']/ul/li[8]/a"
+        List<WebElement> allCoursesOptions = driver.findElements(By.id("groupingdropdown"));
         for(int i=0;i<allCoursesOptions.size();i++)
         {
             if(allCoursesOptions.get(i).getText().equals("Favorit"))
