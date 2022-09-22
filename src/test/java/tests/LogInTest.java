@@ -35,15 +35,15 @@ public class LogInTest extends ShareData {
         Assert.assertEquals(expectedText, actualText);
 
         Thread.sleep(5);
-        By waitPlatforme = By.cssSelector("ul>li[id='iceMenu_773']");
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(waitPlatforme));
-        WebElement hoverOverPlatforme = driver.findElement(waitPlatforme);
+        By locatorPlatform = By.cssSelector("ul>li[id='iceMenu_773']");
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(locatorPlatform));
+        WebElement hoverOverPlatforme = driver.findElement(locatorPlatform);
         Actions builder = new Actions(driver);
         Thread.sleep(1000);
         builder.moveToElement(hoverOverPlatforme).perform();
         Actions action = new Actions(driver);
         Thread.sleep(1000);
-        action.moveToElement(hoverOverPlatforme).moveToElement(driver.findElement(By.cssSelector("li>a[href='https://elearning.unitbv.ro/']"))).click().build().perform();
+        action.moveToElement(hoverOverPlatforme).moveToElement(driver.findElement(By.cssSelector("li>a[href='https://elearning.unitbv.ro/']"))).click().perform();
 
         List<String> tabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(1));
