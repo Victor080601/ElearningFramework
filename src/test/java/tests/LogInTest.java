@@ -70,28 +70,21 @@ public class LogInTest extends ShareData {
         WebElement selectFavourite = driver.findElement(By.xpath("//div[@x-placement='bottom-end']/a[1]"));
         element.clickElement(selectFavourite);
 
-//        WebElement quitFavourite = driver.findElement(By.xpath("//div[@x-placement='bottom-end']/a[2]"));
-//        element.clickElement(quitFavourite);
-        Thread.sleep(1000);
         By searchLocator = By.id("groupingdropdown");
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(searchLocator));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", driver.findElement(searchLocator));
         WebElement searchBar = driver.findElement(searchLocator);
         element.clickElement(searchBar);
 
-        List<WebElement> languageOptions = driver.findElements(By.xpath(" //div[@id='yui_3_17_2_1_1663669950143_37']/ul/li[8]/a"));
-        for(int i=0;i<languageOptions.size();i++)
+        List<WebElement> allCoursesOptions = driver.findElements(By.xpath(" //div[@id='yui_3_17_2_1_1663669950143_37']/ul/li[8]/a"));
+        for(int i=0;i<allCoursesOptions.size();i++)
         {
-            if(languageOptions.get(i).getText().equals("Favorit"))
+            if(allCoursesOptions.get(i).getText().equals("Favorit"))
             {
-                languageOptions.get(i).click();
+                allCoursesOptions.get(i).click();
             }
         }
 
-
-//        WebElement searchBar1 = driver.findElement(By.xpath("//button[@id='groupingdropdown']"));
-//        element.clickElement(searchBar1);
-//
-//
         WebElement clickOnCourse = driver.findElement(By.xpath("//span[text()='Sisteme de operare_IAG']"));
         element.clickElement(clickOnCourse);
 
